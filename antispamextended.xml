@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9" type="plugin" group="contact" method="upgrade">
+	<name>plg_contact_antispamextended</name>
+	<creationDate>11.05.2020</creationDate>
+	<author>Tobias Zulauf</author>
+	<copyright>(C) 2020 Tobias Zulauf All rights reserved.</copyright>
+	<authorUrl>https://www.jah-tz.de</authorUrl>
+	<version>1.0.0</version>
+	<license>GNU/GPL Version 2 or later</license>
+	<description>PLG_CONTACT_ANTISPAMEXTENDED_XML_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
+	<files>
+		<folder>language</folder>
+		<filename plugin="antispamextended">antispamextended.php</filename>
+	</files>
+	<updateservers>
+		<server type="extension" name="AntiSpamExtended Update Site">https://raw.githubusercontent.com/zero-24/plg_contact_antispamextended/master/update.xml</server>
+	</updateservers>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="character_blacklist"
+					type="text"
+					label="PLG_CONTACT_ANTISPAMEXTENDED_OPTION_CHARACTER_BLACKLIST_LABEL"
+					description="PLG_CONTACT_ANTISPAMEXTENDED_OPTION_CHARACTER_BLACKLIST_DESC"
+				/>
+				<field
+					name="character_whitelist"
+					type="text"
+					label="PLG_CONTACT_ANTISPAMEXTENDED_OPTION_CHARACTER_WHITELIST_LABEL"
+					description="PLG_CONTACT_ANTISPAMEXTENDED_OPTION_CHARACTER_WHITELIST_DESC"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
