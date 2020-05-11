@@ -137,7 +137,13 @@ class PlgContactAntiSpamExtended extends CMSPlugin
 			$text = str_replace($whitelistedChar, '', $text);
 		}
 
-		$clearstring = filter_var($text, FILTER_UNSAFE_RAW, FILTER_FLAG_STRIP_HIGH);
+		// Init the clearstring var with the original text
+		$clearstring = $text;
+
+		if ((int) $this->params->get('block_non_ascii_chars', 1) === 1)
+		{
+			$clearstring = filter_var($clearstring, FILTER_UNSAFE_RAW, FILTER_FLAG_STRIP_HIGH);
+		}
 
 		// Remove the blacklisted words / chars so that it triggers the checker
 		foreach ($this->customBlacklist as $blacklisted)

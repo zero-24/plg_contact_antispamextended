@@ -5,7 +5,7 @@
 	<author>Tobias Zulauf</author>
 	<copyright>(C) 2020 Tobias Zulauf All rights reserved.</copyright>
 	<authorUrl>https://www.jah-tz.de</authorUrl>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<license>GNU/GPL Version 2 or later</license>
 	<description>PLG_CONTACT_ANTISPAMEXTENDED_XML_DESCRIPTION</description>
 	<scriptfile>script.php</scriptfile>
@@ -19,6 +19,16 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
+				<field
+					name="block_non_ascii_chars"
+					type="radio"
+					label="PLG_CONTACT_ANTISPAMEXTENDED_OPTION_BLOCK_NON_ASCII_CHARS_LABEL"
+					class="btn-group btn-group-yesno"
+					default="1"
+				>
+					<option value="0">JDISABLED</option>
+					<option value="1">JENABLED</option>
+				</field>
 				<field
 					name="character_blacklist"
 					type="text"
