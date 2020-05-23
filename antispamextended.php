@@ -128,27 +128,38 @@ class PlgContactAntiSpamExtended extends CMSPlugin
 	 */
 	private function checkContent($text): bool
 	{
-		// Make sure the whitelisted chars does not trigger the checker
-		foreach ($this->whitelistedChars as $whitelistedChar)
-		{
-			$text = str_replace($whitelistedChar, '', $text);
-
-			$whitelistedChar = mb_strtoupper($whitelistedChar, 'UTF-8');
-			$text = str_replace($whitelistedChar, '', $text);
-		}
-
 		// Init the clearstring var with the original text
 		$clearstring = $text;
-
-		if ((int) $this->params->get('block_non_ascii_chars', 1) === 1)
-		{
-			$clearstring = filter_var($clearstring, FILTER_UNSAFE_RAW, FILTER_FLAG_STRIP_HIGH);
-		}
 
 		// Remove the blacklisted words / chars so that it triggers the checker
 		foreach ($this->customBlacklist as $blacklisted)
 		{
 			$clearstring = str_replace($blacklisted, '', $clearstring);
+		}
+
+		// Check whether this triggerd already the checks
+		if ($clearstring != $text)
+		{
+			return true;
+		}
+
+		// Restart now with for the non-ascii checks
+		$clearstring = $text;
+
+		if ((int) $this->params->get('block_non_ascii_chars', 1) === 1)
+		{
+			// Make sure the whitelisted chars does not trigger the checker
+			foreach ($this->whitelistedChars as $whitelistedChar)
+			{
+				$text = str_replace($whitelistedChar, '', $text);
+				$clearstring = str_replace($whitelistedChar, '', $clearstring);
+
+				$whitelistedChar = mb_strtoupper($whitelistedChar, 'UTF-8');
+				$text = str_replace($whitelistedChar, '', $text);
+				$clearstring = str_replace($whitelistedChar, '', $clearstring);
+			}
+
+			$clearstring = filter_var($text, FILTER_UNSAFE_RAW, FILTER_FLAG_STRIP_HIGH);
 		}
 
 		if ($clearstring != $text)
