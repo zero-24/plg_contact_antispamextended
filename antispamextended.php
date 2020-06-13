@@ -138,7 +138,7 @@ class PlgContactAntiSpamExtended extends CMSPlugin
 		}
 
 		// Check whether this triggerd already the checks
-		if ($clearstring != $text)
+		if ($clearstring !== $text)
 		{
 			return true;
 		}
@@ -162,7 +162,7 @@ class PlgContactAntiSpamExtended extends CMSPlugin
 			$clearstring = filter_var($text, FILTER_UNSAFE_RAW, FILTER_FLAG_STRIP_HIGH);
 		}
 
-		if ($clearstring != $text)
+		if ($clearstring !== $text)
 		{
 			return true;
 		}
