@@ -23,9 +23,9 @@ This Joomla Plugin allows you to protect you joomla contact form by allowing you
 
 ### Initial setup the plugin
 
-- Download the latest version of the plugin: https://github.com/zero-24/plg_contact_antispamextended/releases/latest
-- Install the plugin using Upload & Install
-- Enable the plugin form the plugin manager
+- [Download the latest version of the plugin](https://github.com/zero-24/plg_contact_antispamextended/releases/latest)
+- Install the plugin using `Upload & Install`
+- Enable the plugin `Contact - AntiSpamExtended` form the plugin manager
 
 Now the inital setup is completed and the default protection is enabled.
 
